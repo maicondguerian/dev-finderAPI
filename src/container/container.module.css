@@ -1,0 +1,14 @@
+#globalContainer{
+    --width: 730px;
+    --height: 415px;
+}
+
+#globalContainer{
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    left: 50%;
+    top: 50%;
+    margin-left: calc((var(--width ) /2 )* -1);
+    margin-top: calc((var(--height) / 2)* -1);
+}

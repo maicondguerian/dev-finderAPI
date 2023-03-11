@@ -1,0 +1,22 @@
+.headerWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color:transparent;
+
+}
+
+button.themeBtn {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+button.themeBtn svg{
+    margin-left: 0.5rem;
+}
