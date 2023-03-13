@@ -13,7 +13,6 @@ const InputSearchResult = () => {
         <div className={styles.serachInputWrapper}>
             <span>
                 <SearchIcon size="23px" />
-                
              </span>
             <input type="text"  placeholder="Search GitHub username..."/>
         </div>
