@@ -5,13 +5,13 @@ import styles from '../Header/header.module.css'
 const ThemeToggleButton = () => {
 
     const { isDarkTheme, toggleTheme, icon } = useContext(ThemeContext);
-   
+
     return (
         <>
-            <div className={isDarkTheme ? 'dark' : 'light'}>
-                <button 
-                className={styles.themeBtn}
-                onClick={toggleTheme}
+            <div>
+                <button
+                    className={styles.themeBtn}
+                    onClick={toggleTheme}
                 >
                     {isDarkTheme ? 'dark' : 'light'}
                     <span>

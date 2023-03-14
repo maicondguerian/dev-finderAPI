@@ -20,13 +20,13 @@ body{
   background-color: var(--bg-color-dark);
 }
 
-body[ClassName="light"] {
+body[data-theme="light"] {
   background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
   color: #000; /* Define a cor do texto */
 }
 
 /* Estilos para o tema escuro */
-body[ClassName="dark"] {
+body[data-theme="dark"] {
   background-color: var(--bg-color-dark); /* Define a cor de fundo do corpo da página */
   color: #fff; /* Define a cor do texto */
 }
