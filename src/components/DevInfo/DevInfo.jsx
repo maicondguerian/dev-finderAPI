@@ -40,7 +40,7 @@ const DevStats = () => {
             <div className={styles['user-info-container']}>
                 <div id={styles.statsIcon}>
                     <div>
-                        <Repos size={18} />
+                        <Repos size={15} />
                         <p>Repos</p>
                     </div>
                     <h3>
@@ -49,7 +49,7 @@ const DevStats = () => {
                 </div>
                 <div id={styles.statsIcon}>
                     <div>
-                        <SvgFollowers size={20} />
+                        <SvgFollowers size={17} />
                         <p>Followers</p>
                     </div>
                     <h3>
@@ -59,7 +59,7 @@ const DevStats = () => {
 
                 <div  id={styles.statsIcon}>
                     <div>
-                        <SvgFollowers size={20} /> 
+                        <SvgFollowers size={17} /> 
                         <p>Following</p>
                     </div>
                     <h3>
