@@ -1,26 +1,38 @@
+import { useContext } from 'react'
+import { DevInfoContext } from '../../context/DevInfoContext'
 import styles from './devInfo.module.css'
-import gitHubJsonAPI from '../../json/Json/gitHubJsonAPI.json'
 
 const AvatarSide = () => {
+    const { devInfo } = useContext(DevInfoContext);
     return (
         <div className={styles.devAvatarWrapper}>
-            <img src={gitHubJsonAPI.avatar_url} alt="" />
+            <img src={devInfo.avatar_url} alt="" />
         </div>
     )
 }
 
 const DevStats = () => {
+
+    const { devInfo } = useContext(DevInfoContext);
+    const dateSrt = devInfo.created_at
+    let date = new Date(dateSrt)
+    let day = date.getDate();
+    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let monthIndex = date.getMonth();
+    let monthName = monthNames[monthIndex];
+    let year = date.getFullYear();
+    const formattedDate = `Joined ${day < 10 ? '0' : ''}${day} ${monthName} ${year}`;
     return (
         <div className={styles.statsWrapper}>
             <div className={styles.titleWrapper}>
-                <h2> {gitHubJsonAPI.name} </h2>
+                <h2> {devInfo.name} </h2>
                 <p> {formattedDate} </p>
             </div>
             <div id={styles.nickP}>
-                <a href={"https://github.com/" + gitHubJsonAPI.login} target="_blank" >@{gitHubJsonAPI.login} </a>
+                <a href={"https://github.com/" + devInfo.login} target="_blank" >@{devInfo.login} </a>
             </div>
             <span>
-                {gitHubJsonAPI.bio ?? 'This profile has no bio'}
+                {devInfo.bio ?? 'This profile has no bio'}
             </span>
             <div className={styles['user-info-container']}>
                 <div>
@@ -28,7 +40,7 @@ const DevStats = () => {
                         Repos
                     </p>
                     <h3>
-                        {gitHubJsonAPI.public_gists}
+                        {devInfo.public_repos}
                     </h3>
                 </div>
                 <div>
@@ -36,7 +48,7 @@ const DevStats = () => {
                         Followers
                     </p>
                     <h3>
-                        {gitHubJsonAPI.followers}
+                        {devInfo.followers}
                     </h3>
                 </div>
                 <div>
@@ -44,7 +56,7 @@ const DevStats = () => {
                         Following
                     </p>
                     <h3>
-                        {gitHubJsonAPI.following}
+                        {devInfo.following}
                     </h3>
                 </div>
             </div>
@@ -79,28 +91,19 @@ const CompanySvg = ({ size }) => {
 }
 
 const Footer = () => {
+    const { devInfo } = useContext(DevInfoContext);
     return (
         <footer>
             <ul>
-                <li> <SpotSvg size="25px" /> {gitHubJsonAPI.location ?? 'Not available'} </li>
-                <li> <TwitterSvg size="25px" /> {gitHubJsonAPI.twitter_username ?? ' Not available'} </li>
-                <li><LinkSvg size="25px" /> <a href={gitHubJsonAPI.blog} target="_blank">{gitHubJsonAPI.blog}</a></li>
-                <li><CompanySvg size="25px" /> {gitHubJsonAPI.company} </li>
+                <li> <SpotSvg size="25px" /> {devInfo.location ?? 'Not available'} </li>
+                <li> <TwitterSvg size="25px" /> {devInfo.twitter_username ?? ' Not available'} </li>
+                <li><LinkSvg size="25px" /> <a href={devInfo.blog} target="_blank">{devInfo.blog}</a></li>
+                <li><CompanySvg size="25px" /> {devInfo.company} </li>
             </ul>
         </footer>
     )
 }
 
-const dateSrt = gitHubJsonAPI.created_at
-
-let date = new Date(dateSrt)
-let day = date.getDate();
-let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-let monthIndex = date.getMonth();
-let monthName = monthNames[monthIndex];
-let year = date.getFullYear();
-
-const formattedDate = `Joined ${day < 10 ? '0' : ''}${day} ${monthName} ${year}`;
 
 export const DevInfo = () => {
     return (

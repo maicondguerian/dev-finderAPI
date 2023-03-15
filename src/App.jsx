@@ -4,6 +4,7 @@ import { DevInfo } from './components/DevInfo/DevInfo'
 import { Header } from './components/Header/Header'
 import { SearchBar } from './components/SearchBar/SearchBar'
 import { Container } from './container/Container'
+import { DevInfoContext } from './context/DevInfoContext'
 import { MyContext } from './context/MyContext/MyContext'
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   const [icon, setIcon] = useState(isDarkTheme ? moonSvg : sunSvg)
 
   const [userName, setUserName] = useState('')
+
+  const [devInfo, setDevInfo] = useState({})
 
   const toggleTheme = () => {
     document.querySelector('body').setAttribute('data-theme', isDarkTheme ? 'light' : 'dark')
@@ -32,7 +35,8 @@ function App() {
   }
 
   return (
-    <MyContext.Provider value={{ isDarkTheme, toggleTheme, icon, handleUserName, userName }}>
+   <DevInfoContext.Provider value={{ devInfo, setDevInfo }}>
+     <MyContext.Provider value={{ isDarkTheme, toggleTheme, icon, handleUserName, userName }}>
       <div className="App">
         <Container>
           <Header />
@@ -41,6 +45,7 @@ function App() {
         </Container>
       </div>
     </MyContext.Provider>
+   </DevInfoContext.Provider>
   )
 }
 

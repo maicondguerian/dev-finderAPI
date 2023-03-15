@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { CallApi } from "../../API/CallApi";
+import { callApi } from "../../API/callApi";
+import { DevInfoContext } from "../../context/DevInfoContext";
 import { MyContext } from "../../context/MyContext/MyContext";
 import styles from "./searchBar.module.css";
 
@@ -20,7 +21,7 @@ const SearchIcon = ({ size }) => {
 };
 
 const InputSearchResult = () => {
-    const { handleUserName } = useContext(MyContext);
+    const { userName, handleUserName } = useContext(MyContext);
     return (
         <form className={styles.serachInputWrapper}>
             <span>
@@ -31,14 +32,25 @@ const InputSearchResult = () => {
                 placeholder="Search GitHub username..."
                 id="github-username"
                 name="github-username"
-            />
-            <CallApi />
+                value={userName}
+                onChange={handleUserName}
+                />
         </form>
     );
 };
 
-const SubmitBtn = ({ name, onClick }) => {
-    return <button onClick={onClick}> {name} </button>;
+const SubmitBtn = ({ name }) => {
+    const { setDevInfo } = useContext(DevInfoContext);
+    const { userName } = useContext(MyContext);
+    const handleSubmit = () =>{
+        callApi(userName)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)
+                setDevInfo(data)
+            })
+    }
+    return <button onClick={handleSubmit}> {name} </button>;
 };
 
 export const SearchBar = () => {
