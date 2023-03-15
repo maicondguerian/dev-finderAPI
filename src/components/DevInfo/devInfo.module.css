@@ -85,14 +85,14 @@ ul {
   grid-template-columns: repeat(2, 1fr); /* cria 2 colunas com largura igual */
   grid-gap: 1em; /* espaço entre as células da grade */
   list-style: none; /* remove os marcadores da lista */
-  grid-column-gap: 4em;
+  grid-column-gap: 3em;
 }
 
 li {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 a {
@@ -102,3 +102,23 @@ a {
 li > svg {
   margin-right: 0.8rem;
 }
+
+#statsIcon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#statsIcon p{
+  font-size: 13px;
+}
+
+#statsIcon svg{
+  margin-right: 0.5em;
+}
+
+#statsIcon >div{
+  display: flex;
+  align-items: center;
+}
+

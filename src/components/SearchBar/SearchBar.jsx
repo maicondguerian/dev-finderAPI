@@ -23,7 +23,7 @@ const SearchIcon = ({ size }) => {
 const InputSearchResult = () => {
     const { userName, handleUserName } = useContext(MyContext);
     return (
-        <form className={styles.serachInputWrapper}>
+        <div className={styles.serachInputWrapper}>
             <span>
                 <SearchIcon size="23px" />
             </span>
@@ -34,8 +34,9 @@ const InputSearchResult = () => {
                 name="github-username"
                 value={userName}
                 onChange={handleUserName}
+                autoComplete="off"
                 />
-        </form>
+        </div>
     );
 };
 
@@ -46,7 +47,6 @@ const SubmitBtn = ({ name }) => {
         callApi(userName)
             .then(response => response.json())
             .then(data =>{
-                console.log(data)
                 setDevInfo(data)
             })
     }
