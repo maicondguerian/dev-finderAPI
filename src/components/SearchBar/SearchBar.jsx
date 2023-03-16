@@ -23,7 +23,7 @@ const SearchIcon = ({ size }) => {
 const InputSearchResult = () => {
     const { userName, handleUserName } = useContext(MyContext);
     return (
-        <div className={styles.serachInputWrapper}>
+        <div className={styles.serachInputWrapper} >
             <span>
                 <SearchIcon size="23px" />
             </span>
