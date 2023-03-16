@@ -37,7 +37,7 @@ const DevStats = () => {
             <span>
                 {devInfo.bio ?? 'This profile has no bio'}
             </span>
-            <div className={styles['user-info-container']}>
+            <div className={styles['user-info-container']} id="user-info-container">
                 <div id={styles.statsIcon}>
                     <div>
                         <Repos size={15} />
@@ -126,7 +126,7 @@ const Footer = () => {
 
 export const DevInfo = () => {
     return (
-        <div className={styles.devInfoContainer}>
+        <div className={styles.devInfoContainer} id="devInfoContainer">
             <AvatarSide />
             <DevStats />
         </div>

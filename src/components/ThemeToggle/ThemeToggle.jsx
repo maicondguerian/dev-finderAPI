@@ -3,8 +3,7 @@ import { MyContext } from '../../context/MyContext/MyContext';
 import styles from '../Header/header.module.css'
 
 const ThemeToggleButton = () => {
-
-    const { isDarkTheme, toggleTheme, icon } = useContext(MyContext);
+    const { theme, toggleTheme, icon } = useContext(MyContext);
 
     return (
         <>
@@ -13,7 +12,7 @@ const ThemeToggleButton = () => {
                     className={styles.themeBtn}
                     onClick={toggleTheme}
                 >
-                    {isDarkTheme ? 'dark' : 'light'}
+                    {theme === 'dark' ?  'light' : 'dark'}
                     <span>
                         {icon}
                     </span>

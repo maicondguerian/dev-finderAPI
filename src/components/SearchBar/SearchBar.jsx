@@ -55,7 +55,7 @@ const SubmitBtn = ({ name }) => {
 
 export const SearchBar = () => {
     return (
-        <div className={styles.searchBarContainer}>
+        <div className={styles.searchBarContainer} id="searchBarContainer">
             <InputSearchResult />
             <SubmitBtn name="Search" />
         </div>

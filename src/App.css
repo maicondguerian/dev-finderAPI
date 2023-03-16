@@ -16,17 +16,28 @@
   --box-shadow-light:rgb(70 96 187 / 20%) 0px 16px 30px -10px;
 }
 
-body{
-  background-color: var(--bg-color-dark);
+.App{
+ width: 100vw;
+ height: 100vh;
 }
 
-body[data-theme="light"] {
+#light  {
   background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
-  color: #000; /* Define a cor do texto */
 }
 
 /* Estilos para o tema escuro */
-body[data-theme="dark"] {
+#dark  {
   background-color: var(--bg-color-dark); /* Define a cor de fundo do corpo da página */
-  color: #fff; /* Define a cor do texto */
+}
+
+#light #searchBarContainer {
+  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
+}
+
+#light #devInfoContainer {
+  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
+}
+
+#light #user-info-container {
+  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
 }

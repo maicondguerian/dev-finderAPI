@@ -75,6 +75,7 @@
   justify-content: space-around;
   flex-direction: row;
   margin: 0 0 2rem 0;
+  box-shadow: rgb(70 96 187 / 20%) 0px 6px 30px -6px;
 }
 
 .user-info-container > div > p {
