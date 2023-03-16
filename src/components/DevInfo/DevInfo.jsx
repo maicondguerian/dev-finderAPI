@@ -76,10 +76,10 @@ const DevStats = () => {
 
 const TwitterSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
 
     return (
@@ -90,10 +90,10 @@ const TwitterSvg = ({ size }) => {
 
 const SpotSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
 
     return (
@@ -104,10 +104,10 @@ const SpotSvg = ({ size }) => {
 
 const LinkSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
     
     return (
@@ -117,10 +117,10 @@ const LinkSvg = ({ size }) => {
 
 const CompanySvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
 
     return (
@@ -130,10 +130,10 @@ const CompanySvg = ({ size }) => {
 
 const SvgFollowers = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
     return (
         <svg text="muted"  height={size} viewBox="0 0 16 16"  width={size} fill={color}><path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path></svg>
@@ -142,10 +142,10 @@ const SvgFollowers = ({ size }) => {
 
 const Repos = ({size}) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : 'blue');
+    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : 'blue')
+        setColor(theme === 'light' ? '#000' : '#fff')
     }, [theme])
     return(
         <svg aria-hidden="true" height={size} viewBox="0 0 16 16"  width={size} fill={color} ><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
@@ -157,10 +157,10 @@ const Footer = () => {
     return (
         <footer>
             <ul>
-                <li> <SpotSvg size="25px" color={theme === 'light' ? '#000' : 'blue'} style={{color: theme === 'light' ? 'red' : 'blue'}} /> {devInfo.location ?? 'Not available'} </li>
-                <li> <TwitterSvg size="25px" color={theme === 'light' ? '#000' : 'blue'} style={{color: theme === 'light' ? 'red' : 'blue'}}/> {devInfo.twitter_username ?? 'Not available'} </li>
-                <li> <LinkSvg size="25px" color={theme === 'light' ? '#000' : 'blue'} style={{color: theme === 'light' ? 'red' : 'blue'}}/> {devInfo.blog && devInfo.blog !== '' ? (<a href={devInfo.blog} target="_blank">{devInfo.blog}</a>) : (<p>Not available</p>)}</li>
-                <li><CompanySvg size="25px" color={theme === 'light' ? '#000' : 'blue'} style={{color: theme === 'light' ? 'red' : 'blue'}}/> {devInfo.company ?? 'Not available'} </li>
+                <li> <SpotSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}} /> {devInfo.location ?? 'Not available'} </li>
+                <li> <TwitterSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.twitter_username ?? 'Not available'} </li>
+                <li> <LinkSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.blog && devInfo.blog !== '' ? (<a href={devInfo.blog} target="_blank">{devInfo.blog}</a>) : (<p>Not available</p>)}</li>
+                <li><CompanySvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.company ?? 'Not available'} </li>
             </ul>
         </footer>
     )
