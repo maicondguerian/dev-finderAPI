@@ -13,6 +13,7 @@ const AvatarSide = () => {
 }
 
 const DevStats = () => {
+    const { theme } = useContext(MyContext);
     const { devInfo } = useContext(DevInfoContext);
     const dateSrt = devInfo.created_at
     let date = new Date(dateSrt)
@@ -31,12 +32,14 @@ const DevStats = () => {
 
 
     useEffect(() => {
+        let bioStyle = {};
+        const textColor = theme === 'light' ? '#000c' : '#ccc';
+        bioStyle = { color: textColor };
         if (devInfo.bio) {
-            setInfo(devInfo.bio);
+          setInfo(<div style={bioStyle}>{devInfo.bio}</div>);
         } else if (devInfo.bio === '' || devInfo.bio === null) {
-            setInfo("This profile has no bio")
+          setInfo(<div style={bioStyle}>This profile has no bio</div>);
         }
-
         if (devInfo.login) {
             setLogin(
                 <a href={`https://github.com/${devInfo.login}`} target="_blank">
@@ -120,7 +123,7 @@ const DevStats = () => {
             </div>)
         }
 
-    }, [devInfo]);
+    }, [devInfo, theme]);
 
     return (
         <div className={styles.statsWrapper}>
@@ -134,7 +137,7 @@ const DevStats = () => {
             <span>
                 {info}
             </span>
-            {Object.keys(devInfo).length > 0 ? 
+            {Object.keys(devInfo).length > 0 ?
                 (
                     <div className={styles['user-info-container']} id="user-info-container">
                         {repos}
