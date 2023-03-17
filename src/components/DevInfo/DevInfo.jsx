@@ -24,8 +24,11 @@ const DevStats = () => {
     let year = date.getFullYear();
     const formattedDate = `Joined ${day < 10 ? '0' : ''}${day} ${monthName} ${year}`;
     const [info, setInfo] = useState('')
-    const [login, setlogin] = useState('')
+    const [login, setLogin] = useState('')
     const [created_at, setCreated_at] = useState('')
+    const [repos, setRepos] = useState('')
+    const [followers, setFollowers] = useState('')
+    const [following, setFollowing] = useState('')
 
 
     useEffect(() => {
@@ -34,28 +37,67 @@ const DevStats = () => {
         } else if (devInfo.bio === '' || devInfo.bio === null) {
             setInfo("This profile has no bio")
         }
-    }, [devInfo]);
 
-
-    useEffect(() => {
         if (devInfo.login) {
-            setlogin(
-                <a href={`https://github.com/${devInfo.login}`} target="_blank">@{devInfo.login}</a>
+            setLogin(
+                <a href={`https://github.com/${devInfo.login}`} target="_blank">
+                    @{devInfo.login}
+                </a>
             );
         } else {
-            setlogin("");
+            setLogin("");
         }
-    }, [devInfo]);
 
-    useEffect(() => {
         if (devInfo.created_at) {
             setCreated_at(formattedDate);
 
         } else {
             setCreated_at("")
         }
-    }, [devInfo])
 
+        if (devInfo.public_repos) {
+            setRepos(<div id={styles.statsIcon}>
+                <div>
+                    <Repos size={15} />
+                    <p>Repos</p>
+                </div>
+                <h3>
+                    {devInfo.public_repos}
+                </h3>
+            </div>)
+        } else {
+            setRepos("")
+        }
+
+        if (devInfo.followers) {
+            setFollowers(<div id={styles.statsIcon}>
+                <div>
+                    <SvgFollowers size={17} />
+                    <p>Followers</p>
+                </div>
+                <h3>
+                    {devInfo.followers}
+                </h3>
+            </div>)
+        } else {
+            setFollowers("")
+        }
+
+        if (devInfo.following) {
+            setFollowing(<div id={styles.statsIcon}>
+                <div>
+                    <SvgFollowers size={17} />
+                    <p>Following</p>
+                </div>
+                <h3>
+                    {devInfo.following}
+                </h3>
+            </div>)
+        } else {
+            setFollowing("")
+        }
+
+    }, [devInfo]);
     return (
         <div className={styles.statsWrapper}>
             <div className={styles.titleWrapper}>
@@ -68,38 +110,17 @@ const DevStats = () => {
             <span>
                 {info}
             </span>
-            <div className={styles['user-info-container']} id="user-info-container">
-                <div id={styles.statsIcon}>
-                    <div>
-                        <Repos size={15} />
-
-                        <p>Repos</p>
-                    </div>
-                    <h3>
-                        {devInfo.public_repos}
-                    </h3>
+            {devInfo.public_repos ? 
+            (
+                <div className={styles['user-info-container']} id="user-info-container">
+                    {repos}
+                    {followers}
+                    {following}
                 </div>
-                <div id={styles.statsIcon}>
-                    <div>
-                        <SvgFollowers size={17} />
-                        <p>Followers</p>
-                    </div>
-                    <h3>
-                        {devInfo.followers}
-                    </h3>
-                </div>
-
-                <div id={styles.statsIcon}>
-                    <div>
-                        <SvgFollowers size={17} />
-                        <p>Following</p>
-                    </div>
-                    <h3>
-                        {devInfo.following}
-                    </h3>
-                </div>
-            </div>
-            <Footer />
+            ) : (
+                <></>
+            )}
+            {devInfo.public_repos ?  <Footer /> : <></>}
         </div>
     )
 }
@@ -200,10 +221,12 @@ const Footer = () => {
 
 
 export const DevInfo = () => {
+    const { devInfo } = useContext(DevInfoContext);
     return (
-        <div className={styles.devInfoContainer} id="devInfoContainer">
-            <AvatarSide />
-            <DevStats />
-        </div>
+        <div className={styles.devInfoContainer} style={devInfo.public_repos ? { padding: '3rem' } : {}} id="devInfoContainer">
+        <AvatarSide />
+        <DevStats />
+      </div>
+      
     )
 }
