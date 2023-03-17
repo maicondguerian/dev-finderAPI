@@ -13,7 +13,6 @@ const AvatarSide = () => {
 }
 
 const DevStats = () => {
-
     const { devInfo } = useContext(DevInfoContext);
     const dateSrt = devInfo.created_at
     let date = new Date(dateSrt)
@@ -66,7 +65,15 @@ const DevStats = () => {
                 </h3>
             </div>)
         } else {
-            setRepos("")
+            setRepos(<div id={styles.statsIcon}>
+                <div>
+                    <Repos size={15} />
+                    <p>Repos</p>
+                </div>
+                <h3>
+                    {devInfo.public_repos}
+                </h3>
+            </div>)
         }
 
         if (devInfo.followers) {
@@ -80,7 +87,15 @@ const DevStats = () => {
                 </h3>
             </div>)
         } else {
-            setFollowers("")
+            setFollowers(<div id={styles.statsIcon}>
+                <div>
+                    <SvgFollowers size={17} />
+                    <p>Followers</p>
+                </div>
+                <h3>
+                    {devInfo.followers}
+                </h3>
+            </div>)
         }
 
         if (devInfo.following) {
@@ -94,10 +109,19 @@ const DevStats = () => {
                 </h3>
             </div>)
         } else {
-            setFollowing("")
+            setFollowing(<div id={styles.statsIcon}>
+                <div>
+                    <SvgFollowers size={17} />
+                    <p>Following</p>
+                </div>
+                <h3>
+                    {devInfo.following}
+                </h3>
+            </div>)
         }
 
     }, [devInfo]);
+
     return (
         <div className={styles.statsWrapper}>
             <div className={styles.titleWrapper}>
@@ -110,22 +134,20 @@ const DevStats = () => {
             <span>
                 {info}
             </span>
-            {devInfo.public_repos ? 
-            (
-                <div className={styles['user-info-container']} id="user-info-container">
-                    {repos}
-                    {followers}
-                    {following}
-                </div>
-            ) : (
-                <></>
-            )}
-            {devInfo.public_repos ?  <Footer /> : <></>}
+            {Object.keys(devInfo).length > 0 ? 
+                (
+                    <div className={styles['user-info-container']} id="user-info-container">
+                        {repos}
+                        {followers}
+                        {following}
+                    </div>
+                ) : (
+                    <></>
+                )}
+            {Object.keys(devInfo).length > 0 ? <Footer /> : <></>}
         </div>
     )
 }
-
-
 
 const TwitterSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
@@ -219,14 +241,13 @@ const Footer = () => {
     )
 }
 
-
 export const DevInfo = () => {
     const { devInfo } = useContext(DevInfoContext);
     return (
-        <div className={styles.devInfoContainer} style={devInfo.public_repos ? { padding: '3rem' } : {}} id="devInfoContainer">
-        <AvatarSide />
-        <DevStats />
-      </div>
-      
+        <div className={styles.devInfoContainer} style={Object.keys(devInfo).length > 0 ? { padding: '2rem' } : {}} id="devInfoContainer">
+            <AvatarSide />
+            <DevStats />
+        </div>
+
     )
 }
