@@ -13,7 +13,6 @@ const ThemeToggleButton = () => {
     const buttonStyle = {
         color: color
       };
-
       
     return (
         <>

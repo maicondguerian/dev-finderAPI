@@ -24,6 +24,8 @@ const DevStats = () => {
     let year = date.getFullYear();
     const formattedDate = `Joined ${day < 10 ? '0' : ''}${day} ${monthName} ${year}`;
     const [info, setInfo] = useState('')
+    const [login, setlogin] = useState('')
+    const [created_at, setCreated_at] = useState('')
 
 
     useEffect(() => {
@@ -35,15 +37,33 @@ const DevStats = () => {
     }, [devInfo]);
 
 
+    useEffect(() => {
+        if (devInfo.login) {
+            setlogin(
+                <a href={`https://github.com/${devInfo.login}`} target="_blank">@{devInfo.login}</a>
+            );
+        } else {
+            setlogin("");
+        }
+    }, [devInfo]);
+
+    useEffect(() => {
+        if (devInfo.created_at) {
+            setCreated_at(formattedDate);
+
+        } else {
+            setCreated_at("")
+        }
+    }, [devInfo])
 
     return (
         <div className={styles.statsWrapper}>
             <div className={styles.titleWrapper}>
                 <h2> {devInfo.name} </h2>
-                <p> {formattedDate} </p>
+                <p> {created_at} </p>
             </div>
             <div id={styles.nickP}>
-                <a href={"https://github.com/" + devInfo.login} target="_blank" >@{devInfo.login} </a>
+                {login}
             </div>
             <span>
                 {info}
