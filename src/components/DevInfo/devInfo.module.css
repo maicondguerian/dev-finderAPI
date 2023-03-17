@@ -6,7 +6,6 @@
 .devInfoContainer {
   margin-top: 1.5rem;
   width: var(--width);
-  height: var(--height);
   border-radius: 15px;
   background-color: #1e2a47;
   padding: 3rem;

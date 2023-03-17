@@ -20,8 +20,16 @@ const SearchIcon = ({ size }) => {
     );
 };
 
-const InputSearchResult = () => {
+const InputSearchResult = ({ handleSubmit }) => {
     const { userName, handleUserName } = useContext(MyContext);
+
+    
+  const  handleKeyDown = (evento) => {
+    if (evento.key === "Enter") {
+      handleSubmit();
+    }
+  }
+
     return (
         <div className={styles.serachInputWrapper} >
             <span>
@@ -35,14 +43,20 @@ const InputSearchResult = () => {
                 value={userName}
                 onChange={handleUserName}
                 autoComplete="off"
+                onKeyDown={handleKeyDown}
                 />
         </div>
     );
 };
 
-const SubmitBtn = ({ name }) => {
+const SubmitBtn = ({ name , handleSubmit }) => {
+    return <button onClick={handleSubmit}> {name} </button>;
+};
+
+export const SearchBar = () => {
     const { setDevInfo } = useContext(DevInfoContext);
     const { userName } = useContext(MyContext);
+    
     const handleSubmit = () =>{
         callApi(userName)
             .then(response => response.json())
@@ -50,14 +64,10 @@ const SubmitBtn = ({ name }) => {
                 setDevInfo(data)
             })
     }
-    return <button onClick={handleSubmit}> {name} </button>;
-};
-
-export const SearchBar = () => {
     return (
         <div className={styles.searchBarContainer} id="searchBarContainer">
-            <InputSearchResult />
-            <SubmitBtn name="Search" />
+            <InputSearchResult handleSubmit={handleSubmit} />
+            <SubmitBtn name="Search"  />
         </div>
     );
 };
