@@ -60,3 +60,8 @@
 #light #user-info-container   svg {
   color: #000;
 }
+
+a{
+  color: #0079fe;
+  text-decoration: none;
+}

@@ -23,6 +23,18 @@ const DevStats = () => {
     let monthName = monthNames[monthIndex];
     let year = date.getFullYear();
     const formattedDate = `Joined ${day < 10 ? '0' : ''}${day} ${monthName} ${year}`;
+    const [info, setInfo] = useState('')
+
+
+    useEffect(() => {
+        if (devInfo.bio) {
+            setInfo(devInfo.bio);
+        } else if (devInfo.bio === '' || devInfo.bio === null) {
+            setInfo("This profile has no bio")
+        }
+    }, [devInfo]);
+
+
 
     return (
         <div className={styles.statsWrapper}>
@@ -34,12 +46,12 @@ const DevStats = () => {
                 <a href={"https://github.com/" + devInfo.login} target="_blank" >@{devInfo.login} </a>
             </div>
             <span>
-                {devInfo.bio ?? 'This profile has no bio'}
+                {info}
             </span>
             <div className={styles['user-info-container']} id="user-info-container">
                 <div id={styles.statsIcon}>
                     <div>
-                    <Repos size={15} />
+                        <Repos size={15} />
 
                         <p>Repos</p>
                     </div>
@@ -49,7 +61,7 @@ const DevStats = () => {
                 </div>
                 <div id={styles.statsIcon}>
                     <div>
-                        <SvgFollowers size={17}/>
+                        <SvgFollowers size={17} />
                         <p>Followers</p>
                     </div>
                     <h3>
@@ -57,9 +69,9 @@ const DevStats = () => {
                     </h3>
                 </div>
 
-                <div  id={styles.statsIcon}>
+                <div id={styles.statsIcon}>
                     <div>
-                        <SvgFollowers size={17}/> 
+                        <SvgFollowers size={17} />
                         <p>Following</p>
                     </div>
                     <h3>
@@ -76,10 +88,10 @@ const DevStats = () => {
 
 const TwitterSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
 
     return (
@@ -90,10 +102,10 @@ const TwitterSvg = ({ size }) => {
 
 const SpotSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
 
     return (
@@ -104,12 +116,12 @@ const SpotSvg = ({ size }) => {
 
 const LinkSvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
-    
+
     return (
         <svg height={size} width={size} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" ><g fill={color}><path d="M7.404 5.012c-2.355 2.437-1.841 6.482.857 8.273.089.06.207.048.283-.027.568-.555 1.049-1.093 1.47-1.776a.213.213 0 00-.084-.3A2.743 2.743 0 018.878 10.1a2.64 2.64 0 01-.223-1.803c.168-.815 1.043-1.573 1.711-2.274l-.004-.002 2.504-2.555a2.568 2.568 0 013.648-.019 2.6 2.6 0 01.037 3.666l-1.517 1.56a.266.266 0 00-.06.273c.35 1.012.435 2.44.201 3.519-.006.03.031.05.053.028l3.228-3.295c2.062-2.105 2.044-5.531-.04-7.615a5.416 5.416 0 00-7.691.04L7.417 4.998l-.013.014z"></path><path d="M13.439 13.75a.401.401 0 00.006-.003c.659-1.204.788-2.586.48-3.933l-.002.002-.001-.001a5.434 5.434 0 00-2.19-3.124.3.3 0 00-.333.015c-.553.448-1.095 1.021-1.452 1.754a.243.243 0 00.096.317c.415.24.79.593 1.04 1.061h.001c.196.33.388.958.263 1.632-.116.894-1.019 1.714-1.736 2.453-.546.559-1.935 1.974-2.49 2.542a2.6 2.6 0 01-3.666.037 2.6 2.6 0 01-.038-3.666l1.521-1.564A.266.266 0 005 11.004c-.338-1.036-.43-2.432-.217-3.51.006-.03-.031-.049-.053-.027l-3.179 3.245c-2.083 2.126-2.066 5.588.04 7.693 2.125 2.083 5.57 2.048 7.653-.078.723-.81 3.821-3.678 4.195-4.577z"></path></g></svg>
     )
@@ -117,10 +129,10 @@ const LinkSvg = ({ size }) => {
 
 const CompanySvg = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
 
     return (
@@ -130,37 +142,37 @@ const CompanySvg = ({ size }) => {
 
 const SvgFollowers = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
     return (
-        <svg text="muted"  height={size} viewBox="0 0 16 16"  width={size} fill={color}><path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path></svg>
+        <svg text="muted" height={size} viewBox="0 0 16 16" width={size} fill={color}><path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path></svg>
     )
 }
 
-const Repos = ({size}) => {
+const Repos = ({ size }) => {
     const { theme } = useContext(MyContext);
-    const [color, setColor] = useState(theme === 'light' ? '#000' : '#fff');
+    const [color, setColor] = useState(theme === 'light' ? '#000c' : '#fff');
 
     useEffect(() => {
-        setColor(theme === 'light' ? '#000' : '#fff')
+        setColor(theme === 'light' ? '#000c' : '#fff')
     }, [theme])
-    return(
-        <svg aria-hidden="true" height={size} viewBox="0 0 16 16"  width={size} fill={color} ><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+    return (
+        <svg aria-hidden="true" height={size} viewBox="0 0 16 16" width={size} fill={color} ><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
     )
 }
 
 const Footer = () => {
-    const { devInfo, theme } = useContext(DevInfoContext);
+    const { devInfo } = useContext(DevInfoContext);
     return (
         <footer>
             <ul>
-                <li> <SpotSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}} /> {devInfo.location ?? 'Not available'} </li>
-                <li> <TwitterSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.twitter_username ?? 'Not available'} </li>
-                <li> <LinkSvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.blog && devInfo.blog !== '' ? (<a href={devInfo.blog} target="_blank">{devInfo.blog}</a>) : (<p>Not available</p>)}</li>
-                <li><CompanySvg size="25px" color={theme === 'light' ? '#000' : '#fff'} style={{color: theme === 'light' ? 'red' : '#fff'}}/> {devInfo.company ?? 'Not available'} </li>
+                <li> <SpotSvg size="25px" /> {devInfo.location ?? 'Not available'} </li>
+                <li> <TwitterSvg size="25px" /> {devInfo.twitter_username ?? 'Not available'} </li>
+                <li> <LinkSvg size="25px" /> {devInfo.blog && devInfo.blog !== '' ? (<a href={devInfo.blog} target="_blank">{devInfo.blog}</a>) : (<p>Not available</p>)}</li>
+                <li><CompanySvg size="25px" /> {devInfo.company ?? 'Not available'} </li>
             </ul>
         </footer>
     )
