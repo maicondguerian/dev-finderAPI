@@ -20,7 +20,6 @@ const SearchIcon = ({ size }) => {
 
 const InputSearchResult = () => {
     const { userName, handleUserName, handleKeyDown } = useContext(MyContext);
-
     return (
         <div className={styles.serachInputWrapper} >
             <span>

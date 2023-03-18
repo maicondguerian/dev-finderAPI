@@ -37,7 +37,7 @@ const DevStats = () => {
         bioStyle = { color: textColor };
         if (devInfo.bio) {
           setInfo(<div style={bioStyle}>{devInfo.bio}</div>);
-        } else if (devInfo.bio === '' || devInfo.bio === null) {
+        } else if (devInfo.bio === '' && devInfo.bio === null) {
           setInfo(<div style={bioStyle}>This profile has no bio</div>);
         }
         if (devInfo.login) {

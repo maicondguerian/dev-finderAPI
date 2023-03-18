@@ -57,6 +57,11 @@
   color: #fff;
 }
 
+#light #searchBarContainer input::placeholder {
+  color: #000c;
+}
+
+
 #light #user-info-container   svg {
   color: #000;
 }
