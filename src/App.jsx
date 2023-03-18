@@ -7,6 +7,7 @@ import { Container } from './container/Container'
 import { DevInfoContext } from './context/DevInfoContext'
 import { MyContext } from './context/MyContext/MyContext'
 import { useLocalStorage } from './localStorage'
+import { callApi } from './API/callApi'
 
 
 function App() {
@@ -26,10 +27,22 @@ function App() {
     setUserName(e.target.value)
   }
 
+  const handleKeyDown = (e) => {
+    return (userName !== '' && e.key === "Enter") && handleSubmit();
+}
+
+const handleSubmit = () => {
+  callApi(userName)
+      .then(response => response.json())
+      .then(data => {
+          setDevInfo(data)
+          console.log(data)
+      })
+}
 
   return (
    <DevInfoContext.Provider value={{ devInfo, setDevInfo }}>
-     <MyContext.Provider value={{ theme, toggleTheme, icon, handleUserName, userName }}>
+     <MyContext.Provider value={{ theme, toggleTheme, icon, handleUserName, userName, handleKeyDown }}>
       <div className="App" id={theme}>
         <Container>
           <Header />

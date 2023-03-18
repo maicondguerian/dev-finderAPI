@@ -1,6 +1,4 @@
 import { useContext } from "react";
-import { callApi } from "../../API/callApi";
-import { DevInfoContext } from "../../context/DevInfoContext";
 import { MyContext } from "../../context/MyContext/MyContext";
 import styles from "./searchBar.module.css";
 
@@ -20,14 +18,8 @@ const SearchIcon = ({ size }) => {
     );
 };
 
-const InputSearchResult = ({ handleSubmit }) => {
-    const { userName, handleUserName } = useContext(MyContext);
-
-    const handleKeyDown = (evento) => {
-        if (evento.key === "Enter") {
-            handleSubmit();
-        }
-    }
+const InputSearchResult = () => {
+    const { userName, handleUserName, handleKeyDown, handleSubmit } = useContext(MyContext);
 
     return (
         <div className={styles.serachInputWrapper} >
@@ -48,22 +40,14 @@ const InputSearchResult = ({ handleSubmit }) => {
     );
 };
 
-const SubmitBtn = ({ name, handleSubmit }) => {
-    return <button onClick={handleSubmit}> {name} </button>;
+const SubmitBtn = ({ name }) => {
+    const { userName,handleSubmit } = useContext(MyContext);
+    return <button onClick={userName !== '' ? handleSubmit : null}> {name} </button>;
 };
 
 export const SearchBar = () => {
-    const { setDevInfo } = useContext(DevInfoContext);
-    const { userName } = useContext(MyContext);
+    const { handleSubmit } = useContext(MyContext);
 
-    const handleSubmit = () => {
-        callApi(userName)
-            .then(response => response.json())
-            .then(data => {
-                setDevInfo(data)
-                console.log(data)
-            })
-    }
     return (
         <div className={styles.searchBarContainer} id="searchBarContainer">
             <InputSearchResult handleSubmit={handleSubmit} />
