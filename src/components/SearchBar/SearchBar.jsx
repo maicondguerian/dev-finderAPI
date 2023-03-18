@@ -19,7 +19,7 @@ const SearchIcon = ({ size }) => {
 };
 
 const InputSearchResult = () => {
-    const { userName, handleUserName, handleKeyDown, handleSubmit } = useContext(MyContext);
+    const { userName, handleUserName, handleKeyDown } = useContext(MyContext);
 
     return (
         <div className={styles.serachInputWrapper} >
@@ -41,7 +41,7 @@ const InputSearchResult = () => {
 };
 
 const SubmitBtn = ({ name }) => {
-    const { userName,handleSubmit } = useContext(MyContext);
+    const { userName, handleSubmit } = useContext(MyContext);
     return <button onClick={userName !== '' ? handleSubmit : null}> {name} </button>;
 };
 
