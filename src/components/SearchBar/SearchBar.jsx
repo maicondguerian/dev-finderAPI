@@ -61,6 +61,7 @@ export const SearchBar = () => {
             .then(response => response.json())
             .then(data => {
                 setDevInfo(data)
+                console.log(data)
             })
     }
     return (
