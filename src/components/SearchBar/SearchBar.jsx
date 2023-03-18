@@ -23,7 +23,6 @@ const SearchIcon = ({ size }) => {
 const InputSearchResult = ({ handleSubmit }) => {
     const { userName, handleUserName } = useContext(MyContext);
 
-
     const handleKeyDown = (evento) => {
         if (evento.key === "Enter") {
             handleSubmit();
