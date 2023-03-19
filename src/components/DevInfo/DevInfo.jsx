@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { DevInfoContext } from '../../context/DevInfoContext'
+import { DevInfoContext } from '../../context/DevInfoContext/DevInfoContext'
 import { MyContext } from '../../context/MyContext/MyContext';
 import styles from './devInfo.module.css'
 
@@ -36,9 +36,9 @@ const DevStats = () => {
         const textColor = theme === 'light' ? '#000c' : '#ccc';
         bioStyle = { color: textColor };
         if (devInfo.bio) {
-          setInfo(<div style={bioStyle}>{devInfo.bio}</div>);
+            setInfo(<div style={bioStyle}>{devInfo.bio}</div>);
         } else if (devInfo.bio === '' && devInfo.bio === null) {
-          setInfo(<div style={bioStyle}>This profile has no bio</div>);
+            setInfo(<div style={bioStyle}>This profile has no bio</div>);
         }
         if (devInfo.login) {
             setLogin(

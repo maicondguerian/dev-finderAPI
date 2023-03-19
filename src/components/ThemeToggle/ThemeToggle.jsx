@@ -7,14 +7,14 @@ const ThemeToggleButton = () => {
     const [color, setColor] = useState();
 
 
-    useEffect(()=>{
-        setColor(theme === 'dark' ?  '#fff' : '#000c')
-    },[theme])
+    useEffect(() => {
+        setColor(theme === 'dark' ? '#fff' : '#000c')
+    }, [theme])
 
     const buttonStyle = {
         color: color
-      };
-      
+    };
+
     return (
         <>
             <div>
@@ -23,7 +23,7 @@ const ThemeToggleButton = () => {
                     onClick={toggleTheme}
                     style={buttonStyle}
                 >
-                    {theme === 'dark' ?  'light' : 'dark'}
+                    {theme === 'dark' ? 'light' : 'dark'}
                     <span>
                         {icon}
                     </span>
