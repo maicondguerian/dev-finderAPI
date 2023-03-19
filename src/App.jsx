@@ -38,7 +38,6 @@ function App() {
       .then(data => {
         setDevInfo(data)
       })
-      
   };  
 
   const handleReset = () => {
