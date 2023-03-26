@@ -6,41 +6,43 @@
   box-sizing: border-box;
   font-family: 'Space Mono', monospace;
 }
-:root {
-  --bg-color-light: rgb(246, 248, 255); /* cor de fundo padrão para o tema claro */
-  --text-color-dark: #000; /* cor de texto padrão para o tema claro */
-  --bg-color-dark: #141c2f; /* cor de fundo para o tema escuro */
-  --text-color-light: #fff; /* cor de texto para o tema escuro */
-  --box-shadow-dark: rgb(70 96 187 / 20%) 0px 16px 30px -10px;
-  --box-shadow-light:rgb(70 96 187 / 20%) 0px 16px 30px -10px;
+
+#light  {
+  --bg-color: rgb(246, 248, 255);
+  --text-color: #fff;
+  --box-shadow:rgb(70 96 187 / 20%) 0px 16px 30px -10px;
+  --btn-color:'#000c';
+  --bio-text-color: #000c;
+  --icon-header-bg-color: #000;
+}
+
+#dark  {
+  --btn-color: #fff;
+  --text-color: #000;
+  --bg-color: #141c2f;
+  --box-shadow: rgb(70 96 187 / 20%) 0px 16px 30px -10px;
+  --bio-text-color: #ccc;
+  --icon-header-bg-color: red;
 }
 
 .App{
  width: 100vw;
  height: 100vh;
-}
-
-#light  {
-  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
-}
-
-/* Estilos para o tema escuro */
-#dark  {
-  background-color: var(--bg-color-dark); /* Define a cor de fundo do corpo da página */
+ background-color: var(--bg-color); /* Define a cor de fundo do corpo da página */
 }
 
 #light #searchBarContainer {
-  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
+  background-color: var(--bg-color); /* Define a cor de fundo do corpo da página */
   color: #000;  
 }
 
 #light #devInfoContainer {
-  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
+  background-color: var(--bg-color); /* Define a cor de fundo do corpo da página */
   color: #000;
 }
 
 #light #user-info-container {
-  background-color: var(--bg-color-light); /* Define a cor de fundo do corpo da página */
+  background-color: var(--bg-color); /* Define a cor de fundo do corpo da página */
   color: #000;
 }
 
@@ -68,4 +70,13 @@
 a{
   color: #0079fe;
   text-decoration: none;
+}
+
+
+.svg_information {
+  fill: var(--btn-color);
+}
+
+.svg_icon_header {
+  fill: var(--icon-header-bg-color);
 }

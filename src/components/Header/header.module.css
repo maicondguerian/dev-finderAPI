@@ -15,9 +15,11 @@ button.themeBtn {
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: var(--btn-color);
 }
 
 button.themeBtn svg{
+    
     margin-left: 0.5rem;
 }
 

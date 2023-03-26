@@ -4,16 +4,6 @@ import styles from '../Header/header.module.css'
 
 const ThemeToggleButton = () => {
     const { theme, toggleTheme, icon } = useContext(MyContext);
-    const [color, setColor] = useState();
-
-
-    useEffect(() => {
-        setColor(theme === 'dark' ? '#fff' : '#000c')
-    }, [theme])
-
-    const buttonStyle = {
-        color: color
-    };
 
     return (
         <>
@@ -21,7 +11,6 @@ const ThemeToggleButton = () => {
                 <button
                     className={styles.themeBtn}
                     onClick={toggleTheme}
-                    style={buttonStyle}
                 >
                     {theme === 'dark' ? 'light' : 'dark'}
                     <span>
